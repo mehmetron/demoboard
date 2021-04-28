@@ -11,6 +11,8 @@ import { useId } from 'reakit-utils'
 import styled, { css } from 'styled-components'
 import { Tab, TabList } from 'reakit/Tab'
 import { colors, fonts, shadows, easings } from '../../constants'
+import { Icon } from '../Icon'
+
 
 const StyledTabList = styled(TabList)`
   align-items: center;
@@ -92,6 +94,19 @@ export function OpenTabList({
       {tabs.map(pathname => (
         <StyledTab {...tab} key={pathname} stopId={pathname}>
           {pathname.slice(1)}
+          
+           <Icon
+            css={css`
+              margin: 10px 0;
+              float: right;
+              cursor: pointer;
+            `}
+            glyph="delete_outline"
+            // @ts-ignore
+            onClick={onClose}>
+            Close
+          </Icon>
+          
         </StyledTab>
       ))}
     </StyledTabList>
